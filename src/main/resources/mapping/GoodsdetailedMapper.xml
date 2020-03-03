@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.GoodsdetailedMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Goodsdetailed" >
+    <id column="dId" property="did" jdbcType="INTEGER" />
+    <result column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="goodsId" property="goodsid" jdbcType="INTEGER" />
+    <result column="dPrice" property="dprice" jdbcType="REAL" />
+    <result column="dDate" property="ddate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dId, userId, goodsId, dPrice, dDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from goodsdetailed
+    where dId = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodsdetailed
+    where dId = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Goodsdetailed" >
+    insert into goodsdetailed (dId, userId, goodsId, 
+      dPrice, dDate)
+    values (#{did,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{goodsid,jdbcType=INTEGER}, 
+      #{dprice,jdbcType=REAL}, #{ddate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Goodsdetailed" >
+    insert into goodsdetailed
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        dId,
+      </if>
+      <if test="userid != null" >
+        userId,
+      </if>
+      <if test="goodsid != null" >
+        goodsId,
+      </if>
+      <if test="dprice != null" >
+        dPrice,
+      </if>
+      <if test="ddate != null" >
+        dDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null" >
+        #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="dprice != null" >
+        #{dprice,jdbcType=REAL},
+      </if>
+      <if test="ddate != null" >
+        #{ddate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Goodsdetailed" >
+    update goodsdetailed
+    <set >
+      <if test="userid != null" >
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsid != null" >
+        goodsId = #{goodsid,jdbcType=INTEGER},
+      </if>
+      <if test="dprice != null" >
+        dPrice = #{dprice,jdbcType=REAL},
+      </if>
+      <if test="ddate != null" >
+        dDate = #{ddate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dId = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Goodsdetailed" >
+    update goodsdetailed
+    set userId = #{userid,jdbcType=INTEGER},
+      goodsId = #{goodsid,jdbcType=INTEGER},
+      dPrice = #{dprice,jdbcType=REAL},
+      dDate = #{ddate,jdbcType=TIMESTAMP}
+    where dId = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>

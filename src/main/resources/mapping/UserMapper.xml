@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.User" >
+    <id column="userId" property="userid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="INTEGER" />
+    <result column="userPwd" property="userpwd" jdbcType="VARCHAR" />
+    <result column="power" property="power" jdbcType="INTEGER" />
+  </resultMap>
+  
+</mapper>
