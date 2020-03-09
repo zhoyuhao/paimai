@@ -2,7 +2,14 @@ package com.example.demo.pojo;
 
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("goods")
 public class Goods {
+	
+	@TableId(type =IdType.AUTO,value = "goodsId")
     private Integer goodsid;
 
     private String goodsname;
@@ -17,7 +24,7 @@ public class Goods {
 
     private String depict;
 
-    private byte[] goodsimg;
+    private String goodsimg;
 
     public Integer getGoodsid() {
         return goodsid;
@@ -75,11 +82,11 @@ public class Goods {
         this.depict = depict == null ? null : depict.trim();
     }
 
-    public byte[] getGoodsimg() {
+    public String getGoodsimg() {
         return goodsimg;
     }
 
-    public void setGoodsimg(byte[] goodsimg) {
+    public void setGoodsimg(String goodsimg) {
         this.goodsimg = goodsimg;
     }
 }
